@@ -8,12 +8,12 @@ import { ToggleLink } from "../ToggleLink";
 import { ConnectedProducts } from "./ProductsConnector";
 import { ProductEditor } from "./ProductEditor";
 import { ProductCreator } from "./ProductCreator";
+
 import { AuthPrompt } from "../auth/AuthPrompt";
 import { authWrapper } from "../auth/AuthWrapper";
-// const graphQlClient = new ApolloClient({
-// uri: GraphQlUrl
-// });
-export const Admin = authWrapper(class extends Component {
+
+export default authWrapper(class extends Component {
+
   constructor(props) {
     super(props);
     this.client = new ApolloClient({
@@ -25,6 +25,7 @@ export const Admin = authWrapper(class extends Component {
       })
     })
   }
+
   render() {
     return <ApolloProvider client={this.client}>
       <div className="container-fluid">
@@ -40,16 +41,16 @@ export const Admin = authWrapper(class extends Component {
             {this.props.isAuthenticated &&
               <button onClick={this.props.signout}
                 className=
-                "btn btn-block btn-secondary m-2 fixed-bottom col-3">
+                    "btn btn-block btn-secondary m-2 fixed-bottom col-3">
                 Wyloguj
-          </button>
-            }
+              </button>
+            }            
           </div>
           <div className="col-9 p-2">
             <Switch>
               {
                 !this.props.isAuthenticated &&
-                <Route component={AuthPrompt} />
+                    <Route component={AuthPrompt} />
               }
               <Route path="/admin/orders" component={OrdersConnector} />
               <Route path="/admin/products/create"
