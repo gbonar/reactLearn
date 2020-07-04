@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import "./App.css";
-import reactLogo from "./logo.svg";
+import { Display } from "./Display";
 
-let name = "Adam";
-const city = "Wrocław";
+export default class App extends Component {
 
-export default class extends Component {
-  message = () => `Użytkownik ${name} z miasta ${city}`;
-  render = () =>
-    <div className="text-center">
-      <h4 className="bg-primary text-white text-center p-3">
-        {this.message()}
-      </h4>
-      <img src={reactLogo} alt="Logo Reacta" />
-      <link rel="stylesheet"
-        href={process.env.PUBLIC_URL + "/static.css"} />
-      <img src={process.env.PUBLIC_URL + "/logo.svg"} alt="Logo Reacta" />
-    </div>
+  constructor(props) {
+    super(props);
+    this.state = {
+      city: "Wrocław"
+    }
+  }
+
+  changeCity = () => {
+    debugger;
+    this.setState({ city: this.state.city === "Wrocław" ? "Gdańsk" : "Wrocław" })
+  }
+
+  render() {
+    return (
+      <Display value={this.state.city} callback={this.changeCity} />
+    );
+  }
 }
