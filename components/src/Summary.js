@@ -1,13 +1,13 @@
 import React from "react";
 
 export function Summary(props) {
-    return <h4 className="bg-info text-white text-center p-2">
-
-        {props.names.map(name =>
-            <div>
-                {`"${name}" składa się z ${name.length} znaków`}
-            </div>
-        )
-        }
-    </h4>
+    if(props.name.length < 4) {
+        return null;
+    }
+    
+    return <React.Fragment>
+            <td>{props.index + 1} </td>
+            <td>{props.name} </td>
+            <td>{props.name.length} </td>
+        </React.Fragment>
 }
