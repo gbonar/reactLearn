@@ -1,19 +1,17 @@
 import React from "react";
+import { CallbackButton } from "./CallbackButton";
 
 export function Summary(props) {
     return <React.Fragment>
-            <td>{props.index + 1} </td>
-            <td>{props.name} </td>
-            <td>{props.name.length} </td>
+        <td>{props.index + 1} </td>
+        <td>{props.name} </td>
+        <td>{props.name.length} </td>
 
-            <td>
-                <button className="btn btn-primary btn-sm" onClick={props.reverseCallback}>
-                    Zmień kolejność
-                </button>
-                <button className="btn btn-info btn-sm m-1" onClick={() => props.promoteCallback(props.name)}>
-                    Na początek
-                </button>
-            </td>
+        <td>
+            <CallbackButton callback={props.reverseCallback} />
+            <CallbackButton theme="info" text="Na początek"
+                callback={() => props.promoteCallback(props.name)} />
+        </td>
 
-        </React.Fragment>
+    </React.Fragment>
 }
