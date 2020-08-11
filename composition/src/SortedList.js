@@ -17,16 +17,15 @@ export class SortedList extends Component {
     toggleSort = () => {
         this.setState({ sort: !this.state.sort });
     }
-    
+
     render() {
         return (
             <div>
                 <GeneralList list={this.getList()} theme="info" />
-                <div className="text-center m-2">
-                    <ActionButton theme="primary" text="Sortuj"
-                        callback={this.toggleSort} />
-                </div>
-            </div>
+                <ActionButton theme="primary" text="Sortuj"
+                    proMode={this.props.proMode}
+                    callback={this.toggleSort} />
+            </div >
         )
     }
 }
