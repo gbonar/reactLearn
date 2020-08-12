@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Selector } from './Selector';
 import { ProductDisplay } from './ProductDisplay';
 import { SupplierDisplay } from './SupplierDisplay';
+
 export default class ProductsAndSuppliers extends Component {
     constructor(props) {
         super(props);
